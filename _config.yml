@@ -39,7 +39,7 @@ timezone:      null
 
 
 #Site config
-title: 绝缘儿
+title: 绝缘儿的网志
 description: 绝缘儿的 Jekyll Blog
 keywords: 绝缘儿
 url: http://x.arlmy.me
@@ -106,3 +106,7 @@ googleAnaly:
 disqus:
   config: true
   id: arlmyx
+
+duoshuo:
+  config: false
+  id: none
