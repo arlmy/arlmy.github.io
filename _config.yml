@@ -50,7 +50,7 @@ favicon: http://jekyllrb.com/favicon.png
 nav:
   - text: 首页
     url: /index.html
-  - text: 分类目录 
+  - text: 分类目录
     url: /categories.html
   - text: 文章归档
     url: /archives.html
@@ -93,6 +93,8 @@ customLinks:
       url: http://jekyllrb.com
     - text: Jekyll Theme
       url: http://www.zhanxin.info/themes.html
+    - text: Blogspot TEST
+      url: http://arlmy.blogspot.com
     message: Friends
   - item:
     - text: Font Awesome
@@ -110,9 +112,5 @@ googleAnaly:
 
 #comment config
 disqus:
-  config: false
-  id: piznblog
-
-duoshuo:
   config: true
-  id: zhanxin
+  id: arlmyx
