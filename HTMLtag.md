@@ -1,0 +1,52 @@
+- HTML 标签
+	- 文档声明
+		- <!DOCTYPE> 文档类型
+		- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 编码声明
+	- 框架
+		- <html> </html>
+		- <head> </head>
+			- <meta> 提供网页信息
+			- <title> </title> 标题
+			- <link> 文档链接
+			- <style> </style> CSS 内嵌
+			- <script> </script> JS 内嵌
+		- <body> </body>
+		- <frame> </frame> 框架结构
+	- 元素/语义化
+		- 块元素
+			- <div> </div>
+			- <header> </header>
+			- <section> </section>
+			- <article> </article>
+			- <nav> </nav>
+			- <aside> </aside>
+			- <footer> </footer>
+			- <p> </p>
+			- <h1> </h1> - <h6> </h6>
+			- <ul> </ul> + <ol> </ol>
+			- <video> </video>
+		- 内联元素
+			- <a> </a>
+			- <span> </span>
+			- id
+			- <img>
+			- <map> </map>
+			- <br>
+			- <abbr> </abbr>
+			- <code> </code>
+	- 表格
+		- <table> </table>
+		- <tr> </tr> + <td> </td>
+	- 表单
+		- <form> </form>
+		- <input>
+		- <label> </label>
+		- <select> </select>
+	- 其他
+		- <canvas> </canvas>
+		- <audio> </audio>
+			
+
+		
+		
+		
