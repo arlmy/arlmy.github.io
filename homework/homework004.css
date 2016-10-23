@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Hiragino Sans GB"
+}
+
+header, footer {
+	display: block;
+} 
+
+a { text-decoration: none; }
+
+header {
+	text-align: center;
+	background-color: #CCCCCC;
+	width: auto;
+	padding: 30px 50px;
+}
+
+
+
+.movie-poster {
+	float: left;
+	width: 300px;
+	padding: 5px;
+	margin: 10px;
+	box-shadow: 0 4px 8px 0 #CCCCCC;
+}
+
+main img {
+	width: 300px;
+}
+
+.movie-link {
+	font-size: 20px;
+	text-align: center;
+}
+
+main h6 {
+	font-size: 16px;
+	text-align: center;
+}
+
+.push {
+	width: 100%;
+	height: 1px;
+	margin: 0;
+	clear: both;
+}
