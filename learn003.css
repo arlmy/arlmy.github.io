@@ -1,6 +1,38 @@
 body {
 	font-family: "Microsoft YaHei", "Hiragino Sans GB", "Droid Sans";
 	color: red;
+
+	width:100%;
+	border:1px solid gray;
+}
+}
+
+p, div, img {
+	border: red solid thin;
+}
+
+#Wiki {
+	background-color: gray;
+	bac
+	padding: 20px;
+}
+
+#Project {
+	background-image: url(image/OO_1.jpg);
+}
+
+#Blog {
+	background-image: url(image/bg_img_1.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+a:link {
+	width: 120px;
+	color: #FFFFFF;
+	background-color: #000000;
+	text-decoration: none;
 }
 
 /* 
