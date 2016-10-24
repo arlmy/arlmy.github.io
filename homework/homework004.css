@@ -14,10 +14,20 @@ header, footer {
 a { text-decoration: none; }
 
 header {
-	text-align: center;
-	background-color: #CCCCCC;
 	width: auto;
-	padding: 30px 50px;
+	padding: 40px 80px;
+	background-image: url("../image/bg_img_2.jpg");
+	background-size: cover;
+	background-position: 50% 95%;
+	opacity: 0.9;
+}
+
+header h2, h4 {
+	margin: 10px;
+	text-align: center;
+	color: #FFFFFF;
+	opacity: 1;
+	text-shadow: 0 10px 10px #000000;
 }
 
 main {
@@ -25,12 +35,22 @@ main {
 	column-gap: 10px;
 }
 
+main:not(div) {
+	background-color: #222222;
+}
+
+div > h6 {
+	background-color: #CCCCCC;
+}
+
 .movie-poster {
+	background-color: #EEEEEE;
 	display: inline-block;
+	text-align: center;
 	width: 300px;
 	padding: 5px;
 	margin: 30px 15px 15px 30px;
-	box-shadow: 0 4px 8px 0 #CCCCCC;
+	box-shadow: 0 4px 8px #000000;
 }
 
 main img {
@@ -38,18 +58,83 @@ main img {
 }
 
 .movie-link {
+	background-color: #FFFFFF;
 	font-size: 20px;
-	text-align: center;
+	z-index: 1;
+	margin-top: -22.5px;
+}
+
+.movie-link a {
+	background-color: #FFFFFF;
+	padding: 5px 10px;
+	border-style: solid;
+	border-color: #FFFFFF;
+	border-width: 3px;
+}
+
+.movie-link a:link {
+	color: #FFFFFF;
+	background-color: #222222;
+}
+.movie-link a:visited {
+	color: #FFFFFF;
+	background-color: #222222;
+}
+.movie-link a:hover {
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.movie-link a:active {
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
 }
 
 main h6 {
+	background-color: #FFFFFF;
+	color: #585858;
 	font-size: 16px;
 	text-align: center;
+	padding: 10px;
+
 }
 
-.push {
-	width: 100%;
-	height: 1px;
-	margin: 0;
-	clear: both;
+.quote:before {
+	content: "";
+	padding: 0 20px 0 0;
+	background: url("../image/blockquote.gif") no-repeat;	z-index: 1;
+	position: relative;
+	right: 3px;	
+}
+
+footer img {
+	margin-top: 5px;
+	margin-bottom: 2px;
+	width: 20px;
+	filter: grayscale(100%);
+}
+
+footer {
+	text-align: center; 
+}
+
+footer a:link {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+footer a:visited {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+footer a:hover {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+footer a:active {
+	color: #000000;
+	background-color: #FFFFFF;
 }
