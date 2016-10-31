@@ -100,7 +100,7 @@ main h6 {
 
 }
 
-.quote:before {
+.quote::before {
 	content: "";
 	padding: 0 20px 0 0;
 	background: url("../image/blockquote.gif") no-repeat;	z-index: 1;
