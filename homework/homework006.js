@@ -19,7 +19,7 @@ function closeTab() {
 		window.close();
 	}
 	else {
-		alert("那就再看看吧！");
+		alert("再看看呗！");
 	}
 }
 
