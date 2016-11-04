@@ -32,9 +32,11 @@ input {
 
 ul {
 	list-style-type: none;
+
 }
 
 li {
 	padding: 3px;
 	margin-left: -20px;
+	font-weight: 700;
 }
