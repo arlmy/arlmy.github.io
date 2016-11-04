@@ -10,6 +10,7 @@ function sayHi() {
 	if (name != null) {
 		output += name;
 		document.write(output+"！");
+		document.write("</br></br>" + "<a href='javascript: location.reload()'>点击返回</a>");
 	}
 }
 
@@ -36,9 +37,11 @@ function guessMyAge() {
 
 		if ($userDate.substr(4,2) > (++month) && $userDate.substr(6) > day) {
 			document.write("您周岁 "+($userAge-1)+"。");
+			document.write("</br></br>" + "<a href='javascript: location.reload()'>点击返回</a>");
 		}
 		else {
-			document.write("您周岁 "+$userAge+"。")
+			document.write("您周岁 "+$userAge+"。");
+			document.write("</br></br>" + "<a href='javascript: location.reload()'>点击返回</a>");
 		}
 	}
 	else {
@@ -64,4 +67,5 @@ function saveUserInfo() {
 	birthDetail[2] = info.birth.substr(6);
 
 	document.write("请核实您输入的信息：" + "</br></br>您的姓名：" + info.name + "</br>您的性别：" + info.sex + "</br>出生日期：" + birthDetail[0] + " 年 " + birthDetail[1] + " 月 " + birthDetail[2] + " 日" + "</br>所在城市：" + info.city + "</br>");
+	document.write("</br></br>" + "<a href='javascript: location.reload()'>点击返回</a>");
 }
