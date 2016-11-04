@@ -3,24 +3,29 @@
 <head>
 	<title>Javascript Test</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="homework006.css">
 </head>
 <body>
 <h1>Javascript Learning 161101</h1>
-<h2>1. alert</h2>
-	<input type="button" name="Hello" value="点击这里" onclick="alertTest()">
-	<button type="button" name="Hello" onclick="alertTest()">HTML5 button 标签</button>
+<div class="main">
+	<h2>1. alert 语句</h2>
+	<button type="button" name="Hello" onclick="alertTest()">点击这里</button>
 <h2>2. prompt 语句</h2>
-	<input type="button" name="Hello" value="你好" onclick="sayHi()">
+	<button type="button" name="Hello" onclick="sayHi()">你好</button>
 <h2>3. confirm</h2>
 	<button onclick="closeTab()">关闭页面</button>
 <h2>4. 年龄计算</h2>
 	<button onclick="guessMyAge()">点击开始</button>
 <h2>5. 数组保存</h2>
-	<span>输入姓名：</span><input type="text" name="input1" id="input_name" value="赵四"></br>
-	<span>输入性别：</span><input type="text" id="input_sex" value="男"></br>
-	<span>输入8位出生年月日：</span><input type="text" id="input_birth" value="19881102"></br>
-	<span>输入所在城市：</span><input type="text" id="input_city" value="北京"></br></br>
+	<ul>
+		<li><span>输入姓名：</span><input type="text" name="input1" id="input_name" value="赵四"></li>
+		<li><span>输入性别：</span><input type="text" id="input_sex" value="男"></li>
+		<li><span>输入8位出生年月日：</span><input type="text" id="input_birth" value="19881102"></li>
+		<li><span>输入所在城市：</span><input type="text" id="input_city" value="北京"></br></li>
+	</ul>
 	<button onclick="saveUserInfo()">点此提交</button>
+</div>
+
 <script type="text/javascript" src="homework006.js"></script>
 </body>
 </html>
