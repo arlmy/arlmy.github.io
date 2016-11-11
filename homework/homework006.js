@@ -26,7 +26,7 @@ function closeTab() {
 
 function guessMyAge() {
 	var $userDate = prompt("请输入8位出生年月日","19680509");
-	if ($userDate.length == 8 && $userDate != null && $userDate.substr(4,2) <= 12 && $userDate.substr(6) <= 31) {
+	if ($userDate != null && $userDate.length == 8 && $userDate.substr(4,2) <= 12 && $userDate.substr(6) <= 31) {
 
 		var today = new Date();
 		var year = today.getFullYear();
