@@ -1,10 +1,44 @@
-* {
-	border-style: solid;
-	border-width: 1px;
-	border-color: red;
+body {
+	width: 80%;
+	margin: 0 auto;
 }
 
-body {
-	width: 60%;
-	margin: 0 auto;
+#header_img {
+	width: 100%;
+	margin-top: 10px;
+}
+
+main, aside {
+	clear: left;
+}
+
+nav li {
+	float: left;
+	list-style: none;
+	margin-left: 30px;
+}
+
+aside {
+	float: right;
+	width: 30%;
+}
+
+aside p {
+	margin-left: 30px;
+}
+
+main {
+	margin-right: 30%;
+}
+
+main section {
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+footer {
+	margin-top: 20px;
 }
