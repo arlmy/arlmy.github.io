@@ -1,0 +1,10 @@
+* {
+	border-style: solid;
+	border-width: 1px;
+	border-color: red;
+}
+
+body {
+	width: 60%;
+	margin: 0 auto;
+}
