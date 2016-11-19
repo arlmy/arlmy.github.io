@@ -59,13 +59,17 @@ function getInfo2() {
 	var bookNum = 1;
 	var arrayNum = 0;
 	var readed = Array();
-	var book = Object();
 	var ratingSum = 0;
 
 	do {
+		var book = Object();
+		// 局部变量与全局变量经常出错，要提高警惕
+
 		book.name = prompt("输入第"+bookNum+"本书的名字", "请填写");
 		book.writer = prompt("输入第"+bookNum+"本书的作者", "请填写");
 		book.rating = prompt("输入第"+bookNum+"本书的评分，请填写 1-10 数字", "请填写")*1;
+
+		readed[arrayNum] = book;
 
 		var name = document.createTextNode(book.name);
 		var writer = document.createTextNode(book.writer);
@@ -83,21 +87,19 @@ function getInfo2() {
 		table.appendChild(tr);
 
 		ratingSum += book.rating;
-		readed[arrayNum] = book;
 		bookNum++;
 		arrayNum++;
 
 	} while (prompt("继续输入？请输入Y/N","Y") == "Y");
 
-
 	var returnDiv = document.getElementById("returnDiv");
 	returnDiv.appendChild(table);
 
 	var ratingAverage = ratingSum/arrayNum;
-
 	var variance = 0;
 	for (var i = 0; i < readed.length; i++) {
-		variance += (readed[i].rating - ratingAverage)^2;
+		variance += (readed[i].rating - ratingAverage)*(readed[i].rating - ratingAverage);
+		// ^2 是计算不出平方的！醉点……
 	}
 	variance = variance / (ratingAverage - 1)
 
