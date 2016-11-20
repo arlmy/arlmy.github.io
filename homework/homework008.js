@@ -151,16 +151,20 @@ function getInfo3() {
 	book.writer = document.getElementById("writer").value;
 	book.rating = document.getElementById("rating").value;
 
+	// 好像只能用 getElmentById().value 来获取 input 的值？
+
 	console.log(book);
 
 	append(book.name, book.writer, book.rating, "td");
 
-	//button 会使页面在点击后刷新，不想刷新，应使用 input
+	// button 会使页面在点击后刷新，不想刷新，应使用 input
 
 	clickCount++;
 	document.getElementById("clickCount").innerHTML=clickCount;
 
 	console.log(clickCount);
+
+	// more task : 如何随意定义列数，动态生成函数？目标：列数可定义，行数无限
 }
 
 var returnDiv = document.getElementById("returnDiv2");
