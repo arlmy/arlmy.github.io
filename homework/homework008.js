@@ -90,6 +90,8 @@ function getInfo2() {
 		bookNum++;
 		arrayNum++;
 
+		console.log(book);
+
 	} while (prompt("继续输入？请输入Y/N","Y") == "Y");
 
 	var returnDiv = document.getElementById("returnDiv");
@@ -100,11 +102,13 @@ function getInfo2() {
 	for (var i = 0; i < readed.length; i++) {
 		variance += (readed[i].rating - ratingAverage)*(readed[i].rating - ratingAverage);
 		// ^2 是计算不出平方的！醉点……
+		console.log(i);
 	}
-	variance = variance / (ratingAverage - 1)
+	variance = variance / (ratingAverage - 1);
 
 	alert("您今年共读了"+arrayNum+"本书，评分均值为"+ratingAverage+"分，方差为"+variance);
-		
+	
+
 
 }
 
