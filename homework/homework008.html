@@ -11,8 +11,29 @@
 			<button type="button" onclick="getInfo1()">开始读取</button>
 		<div id="TaskTwo">Task Two</div>
 			<button type="button" onclick="getInfo2()">开始读取</button>
-			<div id="returnDiv"></div>
+			<div id="returnDiv1"></div>
 		<div id="TaskThree">Task Three</div>
+			<form id="formInput">
+				<div>
+					<label for="name">书名：</label>
+					<input type="text" name="bookName" id="name">
+				</div>
+				<div>
+					<label for="writer">作者：</label>
+					<input type="text" name="bookWriter" id="writer">
+				</div>
+				<div>
+					<label for="rating">评分：</label>
+					<input type="numeric" name="bookRating" id="rating">
+				</div>
+				<div>
+					<input type="button" value="提交" onclick="getInfo3()">
+					<div id="returnDiv2"></div>
+				</div>
+			</form>
+			<div>
+				<span id="clickCount">0</span>
+			</div>
 	</main>
 
 	<script type="text/javascript" src="homework008.js"></script>

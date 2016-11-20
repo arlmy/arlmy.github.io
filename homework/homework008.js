@@ -94,7 +94,7 @@ function getInfo2() {
 
 	} while (prompt("继续输入？请输入Y/N","Y") == "Y");
 
-	var returnDiv = document.getElementById("returnDiv");
+	var returnDiv = document.getElementById("returnDiv1");
 	returnDiv.appendChild(table);
 
 	var ratingAverage = ratingSum/arrayNum;
@@ -107,13 +107,64 @@ function getInfo2() {
 	variance = variance / (ratingAverage - 1);
 
 	alert("您今年共读了"+arrayNum+"本书，评分均值为"+ratingAverage+"分，方差为"+variance);
-	
-
 
 }
 
 
+var clickCount = 0;
+var table = document.createElement("table");
 
+function append(arr1, arr2, arr3, thtd) {
+
+	var txt1 = document.createTextNode(arr1);
+	var txt2 = document.createTextNode(arr2);
+	var txt3 = document.createTextNode(arr3);
+
+	var thtd1 = document.createElement(thtd);
+	var thtd2 = document.createElement(thtd);
+	var thtd3 = document.createElement(thtd);
+
+	thtd1.appendChild(txt1);
+	thtd2.appendChild(txt2);
+	thtd3.appendChild(txt3);
+
+	var tr = document.createElement("tr");
+	tr.appendChild(thtd1);
+	tr.appendChild(thtd2);
+	tr.appendChild(thtd3);
+
+	table.appendChild(tr);
+
+	console.log(table);
+
+}
+
+
+function getInfo3() {
+
+	if (clickCount == 0) {
+		append("书名", "作者", "评分", "th");
+	}
+
+	var book = Object();
+	book.name = document.getElementById("name").value;
+	book.writer = document.getElementById("writer").value;
+	book.rating = document.getElementById("rating").value;
+
+	console.log(book);
+
+	append(book.name, book.writer, book.rating, "td");
+
+	//button 会使页面在点击后刷新，不想刷新，应使用 input
+
+	clickCount++;
+	document.getElementById("clickCount").innerHTML=clickCount;
+
+	console.log(clickCount);
+}
+
+var returnDiv = document.getElementById("returnDiv2");
+returnDiv.appendChild(table);
 
 
 
