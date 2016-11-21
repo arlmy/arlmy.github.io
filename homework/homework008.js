@@ -114,34 +114,33 @@ function getInfo2() {
 var clickCount = 0;
 var table = document.createElement("table");
 
-function append(arr1, arr2, arr3, thtd) {
+function createTableRow(content) {
     var txt;
     var td;
-    if (arr1 && arr2 && arr3){
+    var len = content.length;
+    if (len != 0){
         var tr = document.createElement("tr");
-        var content = [arr1, arr2, arr3];
     }else {
         console.log("less arguments than needed!");
+        /*use throw is the best way, now don't care */
         return;
     }
 
-    for (var i = 0; i < content.length; i++){
+    for (var i = 0; i < len; i++){
         txt = document.createTextNode(content[i]);
         td = document.createElement("td");
         td.appendChild(txt);
         tr.appendChild(td);
     }
+    return tr;
 
-	table.appendChild(tr);
-
-	console.log(table);
 }
 
 
 function getInfo3() {
 
 	if (clickCount == 0) {
-		append("书名", "作者", "评分", "th");
+		table.appendChild(createTableRow(["书名", "作者", "评分"]));
 	}
 
 	var book = Object();
@@ -152,9 +151,10 @@ function getInfo3() {
 	// 好像只能用 getElmentById().value 来获取 input 的值？
 
 	console.log(book);
+    var content = [book.name, book.writer, book.rating];
 
-	append(book.name, book.writer, book.rating, "td");
-
+	table.appendChild(createTableRow(content));
+    console.log(table);
 	// button 会使页面在点击后刷新，不想刷新，应使用 input
 
 	clickCount++;
