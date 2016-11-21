@@ -114,28 +114,25 @@ function getInfo2() {
 var clickCount = 0;
 var table = document.createElement("table");
 
-function append(arr1, arr2, arr3, thtd) {
+function createTableRow(content) {
+    var txt;
+    var td;
+    var len = content.length;
+    if (len != 0){
+        var tr = document.createElement("tr");
+    }else {
+        console.log("less arguments than needed!");
+        /*use throw is the best way, now don't care */
+        return;
+    }
 
-	var txt1 = document.createTextNode(arr1);
-	var txt2 = document.createTextNode(arr2);
-	var txt3 = document.createTextNode(arr3);
-
-	var thtd1 = document.createElement(thtd);
-	var thtd2 = document.createElement(thtd);
-	var thtd3 = document.createElement(thtd);
-
-	thtd1.appendChild(txt1);
-	thtd2.appendChild(txt2);
-	thtd3.appendChild(txt3);
-
-	var tr = document.createElement("tr");
-	tr.appendChild(thtd1);
-	tr.appendChild(thtd2);
-	tr.appendChild(thtd3);
-
-	table.appendChild(tr);
-
-	console.log(table);
+    for (var i = 0; i < len; i++){
+        txt = document.createTextNode(content[i]);
+        td = document.createElement("td");
+        td.appendChild(txt);
+        tr.appendChild(td);
+    }
+    return tr;
 
 }
 
@@ -143,7 +140,7 @@ function append(arr1, arr2, arr3, thtd) {
 function getInfo3() {
 
 	if (clickCount == 0) {
-		append("书名", "作者", "评分", "th");
+		table.appendChild(createTableRow(["书名", "作者", "评分"]));
 	}
 
 	var book = Object();
@@ -154,9 +151,10 @@ function getInfo3() {
 	// 好像只能用 getElmentById().value 来获取 input 的值？
 
 	console.log(book);
+    var content = [book.name, book.writer, book.rating];
 
-	append(book.name, book.writer, book.rating, "td");
-
+	table.appendChild(createTableRow(content));
+    console.log(table);
 	// button 会使页面在点击后刷新，不想刷新，应使用 input
 
 	clickCount++;
@@ -169,14 +167,3 @@ function getInfo3() {
 
 var returnDiv = document.getElementById("returnDiv2");
 returnDiv.appendChild(table);
-
-
-
-
-
-
-
-
-
-
-
