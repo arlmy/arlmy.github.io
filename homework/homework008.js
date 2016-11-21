@@ -115,28 +115,26 @@ var clickCount = 0;
 var table = document.createElement("table");
 
 function append(arr1, arr2, arr3, thtd) {
+    var txt;
+    var td;
+    if (arr1 && arr2 && arr3){
+        var tr = document.createElement("tr");
+        var content = [arr1, arr2, arr3];
+    }else {
+        console.log("less arguments than needed!");
+        return;
+    }
 
-	var txt1 = document.createTextNode(arr1);
-	var txt2 = document.createTextNode(arr2);
-	var txt3 = document.createTextNode(arr3);
-
-	var thtd1 = document.createElement(thtd);
-	var thtd2 = document.createElement(thtd);
-	var thtd3 = document.createElement(thtd);
-
-	thtd1.appendChild(txt1);
-	thtd2.appendChild(txt2);
-	thtd3.appendChild(txt3);
-
-	var tr = document.createElement("tr");
-	tr.appendChild(thtd1);
-	tr.appendChild(thtd2);
-	tr.appendChild(thtd3);
+    for (var i = 0; i < content.length; i++){
+        txt = document.createTextNode(content[i]);
+        td = document.createElement("td");
+        td.appendChild(txt);
+        tr.appendChild(td);
+    }
 
 	table.appendChild(tr);
 
 	console.log(table);
-
 }
 
 
@@ -169,14 +167,3 @@ function getInfo3() {
 
 var returnDiv = document.getElementById("returnDiv2");
 returnDiv.appendChild(table);
-
-
-
-
-
-
-
-
-
-
-
