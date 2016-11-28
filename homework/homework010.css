@@ -1,0 +1,28 @@
+/* 布局 */
+
+header {
+	margin: 50px auto;
+}
+
+nav {
+	float: left;
+	left: 0;
+	width: 120px;
+}
+
+.about {
+	float: right;
+	right: 0;
+	width: 200px;
+}
+
+main {
+	margin-left: 130px;
+	margin-right: 220px;
+}
+
+footer {
+	clear: both;
+}
+
+/* 样式 */
