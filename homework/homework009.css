@@ -1,0 +1,17 @@
+header {
+	margin: 50px auto;
+}
+
+nav {
+	float: left;
+	width: 200px;
+}
+
+main {
+	margin-left: 200px;
+}
+
+footer {
+	clear: left;
+}
+
