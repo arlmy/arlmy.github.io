@@ -1,12 +1,16 @@
-/* 400px 以下开始 */
+/* 500px 以下开始 */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 
 * {
 	margin: 0;
 	padding: 0;
+
+/*
 	border-style: solid;
 	border-width: 1px;
+*/
+
 }
 
 body {
@@ -22,7 +26,9 @@ body {
 #name {
 	width: 300px;
 	height: 400px;
-	margin: 200px auto;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
 }
 
 #name img {
@@ -124,17 +130,21 @@ body {
 
 }
 
-/* 400px 以下结束 */
+/* 500px 以下结束 */
 
-/* 400px 以上开始 */
+/* 500px 以上开始 */
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 501px) {
 
 * {
 	margin: 0;
 	padding: 0;
+
+/*
 	border-style: solid;
 	border-width: 1px;
+*/
+
 }
 
 body {
