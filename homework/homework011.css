@@ -98,6 +98,7 @@ body {
 .who_info img {
 	width: 80px;
 	height: 80px;
+	border-radius: 40px;
 }
 
 .past {
@@ -227,6 +228,7 @@ body {
 }
 
 .who_info img {
+	border-radius: 40px;
 	width: 80px;
 	height: 80px;
 }
