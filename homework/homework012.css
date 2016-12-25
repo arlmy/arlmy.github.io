@@ -1,0 +1,267 @@
+/* 500px 以下开始 */
+
+@media screen and (max-width: 500px) {
+
+* {
+	margin: 0;
+	padding: 0;
+
+/*
+	border-style: solid;
+	border-width: 1px;
+*/
+
+}
+
+body {
+	font-family: "Hiragino Sans GB";
+}
+
+#name_container {
+	height: 100vh;
+	background-color: #ffe478;
+	text-align: center;
+}
+
+#name {
+	width: 300px;
+	height: 400px;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
+}
+
+#name img {
+	width: 180px;
+	height: 180px;
+	position: relative;
+	padding: 0 60px 0 60px;
+}
+
+#name span {
+	font-size: 40px;
+}
+
+#feature_container {
+	text-align: center;
+}
+
+#name p {
+	font-size: 20px;
+}
+
+.how_it_work {
+	padding: 15px 0;
+}
+
+.feature {
+	margin: 15px auto;
+	font-size: 24px;
+	width: 350px;
+	text-align: center;
+	background-color: #ffe478;
+}
+
+.feature img {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.feature_content {
+	font-size: 18px;
+	text-align: center;
+}
+
+.why_are_we {
+	padding: 15px 15px;
+}
+
+.why_title {
+	text-align: center;
+	font-size: 24px;
+}
+
+.why_content {
+	font-size: 18px;
+}
+
+.who_container {
+	padding: 50px 20px;
+}
+
+.who_title {
+	text-align: center;
+	font-size: 24px;
+}
+
+.who_info {
+	padding: 10px 0;
+	text-align: center;
+	font-size: 18px;
+}
+
+.who_info img {
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+}
+
+.past {
+	padding: 20px;
+	height: 100px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.keep_in_touch {
+	padding: 20px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.partners {
+	padding: 20px;
+	height: 100px;
+	font-size: 24px;
+	text-align: center;
+}
+
+
+}
+
+/* 500px 以下结束 */
+
+/* 500px 以上开始 */
+
+@media screen and (min-width: 501px) {
+
+* {
+	margin: 0;
+	padding: 0;
+
+/*
+	border-style: solid;
+	border-width: 1px;
+*/
+
+}
+
+body {
+	font-family: "Hiragino Sans GB";
+}
+
+#name_container {
+	height: 100vh;
+	background-color: #ffe478;
+	text-align: center;
+}
+
+#name {
+	width: 400px;
+	margin: 0 auto;
+	position: relative;
+	top: 220px;
+}
+
+#name img {
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: 25px;
+}
+
+#name span {
+	font-size: 57px;
+	position: relative;
+	top: -20px;
+}
+
+#feature_container {
+	text-align: center;
+}
+
+#name p {
+	font-size: 26px;
+}
+
+.how_it_work {
+	padding: 50px 0;
+}
+
+.feature {
+	display: table-cell;
+	width: 33.33%;
+	padding: 20px;
+	font-size: 30px;
+	height: 150px;
+	text-align: center;
+}
+
+.feature img {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.feature_content {
+	font-size: 20px;
+	text-align: left;
+}
+
+.why_are_we {
+	padding: 50px 20px;
+}
+
+.why_title {
+	text-align: center;
+	font-size: 30px;
+}
+
+.why_content {
+	font-size: 20px;
+}
+
+.who_container {
+	padding: 50px 20px;
+}
+
+.who_title {
+	text-align: center;
+	font-size: 30px;
+}
+
+.who_info {
+	padding: 10px 0;
+	text-align: center;
+	font-size: 20px;
+}
+
+.who_info img {
+	border-radius: 40px;
+	width: 80px;
+	height: 80px;
+}
+
+.past {
+	padding: 20px;
+	height: 100px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.keep_in_touch {
+	padding: 20px;
+	font-size: 30px;
+	text-align: center;
+}
+
+.partners {
+	padding: 20px;
+	height: 100px;
+	font-size: 30px;
+	text-align: center;
+}
+}
+
+/* 400px 以上结束 */
