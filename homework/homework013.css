@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 10px;
+
+}
+
+body {
+	width: 600px;
+	margin: 0 auto;
+}
+
+h1 {
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+
+img {
+	width: 400px;
+	clear: both;
+	margin: 0 0 0 150px;
+}
+
+a, p {
+	text-decoration: none;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+li {
+	list-style: none;
+	float: left;
+}
+
+/*
+
+[CSS Web Safe Fonts](http://www.w3schools.com/cssref/css_websafe_fonts.asp)
+
+*/
