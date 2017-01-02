@@ -1,0 +1,141 @@
+/*
+
+* {
+	border-style: solid;
+	border-width: 1px;
+}
+
+*/
+
+body {
+	font-family: sans-serif;
+}
+
+#title h1 {
+	color: #4EB8EA;
+	font-size: 32px;
+}
+
+#title h2 {
+	font-size: 12px;
+}
+
+/* 下拉内容格式+隐藏 */
+
+.menu2 + ul {
+	list-style: none;
+	width: 150px;
+}
+
+.menu2 + ul a {
+	text-decoration: none;
+}
+
+.menu2 + ul {
+	display: none;
+}
+
+.menu3 + ul {
+	list-style: none;
+	width: 150px;
+}
+
+.menu3 + ul a {
+	text-decoration: none;
+}
+
+.menu3 + ul {
+	display: none;
+	/*
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	*/
+}
+
+/* 一级菜单显示 */
+
+.menu > li {
+	list-style: none; /* 去掉列表标记 */
+	float: left;
+}
+
+.menu > li a {
+	text-decoration: none;
+	padding: 5px 13px;
+	color: #FFFFFF;
+}
+
+.menu1 a {
+	background-color: #F58C21;
+}
+
+.menu2 a {
+	background-color: #4EB8EA;
+}
+
+.menu3 a {
+	background-color: #D6E636;
+}
+
+.menu4 a {
+	background-color: #EE4C98;
+}
+
+.menu5 a {
+	background-color: #F58C21;
+}
+
+/* 过渡动画 */
+
+.menu-bar li:hover > a {
+	color: #220000;
+}
+
+.menu-bar li:hover > ul {
+	display: block;
+}
+
+/* */
+/* */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+.menu > ul {
+	display: inline-block;
+}
+
+.menu li {
+	list-style: none;
+	float: left;
+}
+
+
+
+
+.menu li:hover > a {
+	color: #555;
+}
+
+.menu li ul {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	-webkit-transition: 1s all;
+}
+
+*/
