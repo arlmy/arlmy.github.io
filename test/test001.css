@@ -1,0 +1,13 @@
+div.menu-bar ul {
+	font-size: 30px;
+}
+
+ul ul {
+	display: none;
+}
+
+ul li:hover ul {
+	display: block;
+}
+
+
