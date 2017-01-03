@@ -1,0 +1,102 @@
+* {
+	border-style: solid;
+	border-width: 1px;
+}
+
+/*
+
+https://mdn.mozillademos.org/files/3700/example.html
+
+*/
+
+/*  */
+
+body {
+	font-family: sans-serif;
+}
+
+#title h1 {
+	color: #4EB8EA;
+	font-size: 32px;
+}
+
+#title h2 {
+	font-size: 12px;
+}
+
+.menu-bar ul ul {
+	display: none;
+}
+
+.menu-bar > ul li {
+	float: left;
+}
+
+.menu-bar ul li:hover ul {
+	display: block;
+}
+
+.menu-bar ul {
+	display: inline-block;
+	margin: 0; /* 对齐必备 */
+	padding: 0; /* 对齐必备 */
+}
+
+.menu-bar li {
+	position: relative;
+	list-style: none;
+}
+
+.menu-bar li a {
+	text-decoration: none;
+	padding: 4px 8px;
+	text-decoration: none;
+	font-size: 0.8em;
+	font-weight: 400;
+	color: #FFFFFF;
+}
+
+.menu-bar li li a {
+	width: 140px;
+}
+
+.menu-bar ul ul {
+	position: absolute;
+}
+
+/* 背景颜色 */
+
+.menu1 a {
+	background-color: #F58C21;
+}
+
+.menu2 a {
+	background-color: #4EB8EA;
+}
+
+.menu3 a {
+	background-color: #D6E636;
+}
+
+.menu4 a {
+	background-color: #EE4C98;
+}
+
+.menu5 a {
+	background-color: #F58C21;
+}
+
+.menu-bar li a {
+	display: block;
+
+}
+
+.menu-bar li:hover > a {
+	color: #220000;
+}
+
+/* 渐变 */
+
+.menu-bar li ul {
+	transition: 1s opacity;
+}
