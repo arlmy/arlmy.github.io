@@ -1,7 +1,11 @@
+/*
+
 * {
 	border-style: solid;
 	border-width: 1px;
 }
+
+*/
 
 /*
 
@@ -25,7 +29,8 @@ body {
 }
 
 .menu-bar ul ul {
-	display: none;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .menu-bar > ul li {
@@ -33,7 +38,9 @@ body {
 }
 
 .menu-bar ul li:hover ul {
-	display: block;
+	opacity: 1;
+	visibility: visible;
+	transition: 1s all;
 }
 
 .menu-bar ul {
@@ -52,7 +59,7 @@ body {
 	padding: 4px 8px;
 	text-decoration: none;
 	font-size: 0.8em;
-	font-weight: 400;
+	font-weight: 500;
 	color: #FFFFFF;
 }
 
@@ -98,5 +105,21 @@ body {
 /* 渐变 */
 
 .menu-bar li ul {
-	transition: 1s opacity;
+	-webkit-transition: 1s all;
+	-moz-transition: 1s all;
+	     transition: 1s all;
+}
+
+/* 圆角 */
+
+.menu-bar li:last-child a {
+	border-bottom-right-radius: 10px;
+}
+
+.menu-bar li:first-child a {
+	border-top-left-radius: 10px;
+}
+
+.menu-bar li li:first-child a {
+	border-radius: 0;
 }
