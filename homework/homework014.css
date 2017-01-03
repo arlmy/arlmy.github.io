@@ -1,9 +1,13 @@
-/*
+
 
 * {
 	border-style: solid;
 	border-width: 1px;
 }
+
+/*
+
+https://mdn.mozillademos.org/files/3700/example.html
 
 */
 
@@ -20,52 +24,51 @@ body {
 	font-size: 12px;
 }
 
-/* 下拉内容格式+隐藏 */
+/* menu-bar */
 
-.menu2 + ul {
+.menu-bar ul {
+	position: relative;
+	display: inline-block;
+}
+
+/* 下拉内容隐藏 */
+
+.menu2 ul {
 	list-style: none;
-	width: 150px;
-}
-
-.menu2 + ul a {
-	text-decoration: none;
-}
-
-.menu2 + ul {
 	display: none;
 }
 
-.menu3 + ul {
+.menu3 ul {
 	list-style: none;
-	width: 150px;
-}
-
-.menu3 + ul a {
-	text-decoration: none;
-}
-
-.menu3 + ul {
 	display: none;
-	/*
-	opacity: 0;
-	visibility: hidden;
-	position: absolute;
-	left: 0;
-	*/
 }
 
-/* 一级菜单显示 */
+/* 下拉内容显示 */
+
+.menu li:hover ul {
+	display: block;
+}
 
 .menu > li {
-	list-style: none; /* 去掉列表标记 */
+	list-style: none;
 	float: left;
 }
 
-.menu > li a {
-	text-decoration: none;
-	padding: 5px 13px;
-	color: #FFFFFF;
+.menu-bar > ul {
+	display: inline-block;
 }
+
+.menu li a {
+	display: block;
+	padding: 4px 8px;
+	text-decoration: none;
+	font-size: 0.8em;
+	font-weight: 400;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+/* 背景颜色 */
 
 .menu1 a {
 	background-color: #F58C21;
@@ -87,55 +90,38 @@ body {
 	background-color: #F58C21;
 }
 
-/* 过渡动画 */
+/* 停留变色 */
 
 .menu-bar li:hover > a {
 	color: #220000;
 }
 
-.menu-bar li:hover > ul {
-	display: block;
-}
-
-/* */
-/* */
+/*  */
 
 
+/*
 
-
-
-
-
-
-
-
-
-
-
-/* 
-
-.menu > ul {
-	display: inline-block;
-}
+一级菜单显示
 
 .menu li {
-	list-style: none;
+	list-style: none; 去掉列表标记 
 	float: left;
 }
 
-
-
-
-.menu li:hover > a {
-	color: #555;
+.menu > li a {
+	text-decoration: none;
+	padding: 5px 13px;
+	color: #FFFFFF;
 }
 
-.menu li ul {
-	opacity: 0;
-	visibility: hidden;
-	position: absolute;
-	left: 0;
-	-webkit-transition: 1s all;
+
+
+过渡动画
+
+
+
+.menu-bar li:hover > ul {
+	display: block;
 }
 
 */
