@@ -1,3 +1,5 @@
+/*
+
 window.onload = prepareGallery;
 
 function prepareGallery () {
@@ -30,3 +32,5 @@ function showPic(whichpic) {
 	}
 	return true;
 }
+
+*/
