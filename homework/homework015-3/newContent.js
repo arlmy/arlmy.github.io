@@ -1,35 +1,37 @@
 window.onload = prepareOnclick;
-window.onload = abc;
 
 function prepareOnclick() {
 	var list = document.getElementById('list');
 	var links = list.getElementsByTagName('a');
+	var urls = a.getAttribute("href");
 
 	for ( var i=0; i < links.length; i++) {
 	  links[i].onclick = function() {
 	  	console.log(list);
-	  	return newContent(this) ? false : true;
+	  	newContent(this);
+	  	return false;
 		}
 	}
 }
 
-function abc() {
+
+function newContent(url) {
 	var request = getHTTPObject();
-	request.open( "GET", "members/picklecai.html" , true);
+	request.open( "GET", url , true);
+	request.responseType = "document";
 	request.send();
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
 			console.log(request);
-			console.log(request.responseText);
-			document.getElementsByTagName("body").innerHTML = request.responseText;
+			var Html = request.responseXML.body.innerHTML;
+			console.log(Html);
+			document.getElementById("place").innerHTML = Html;
 		}
 	}
 }
 
 
 
-function showInfo(who) {
-	var source = who.getAttribute("href");
-	var place = document.getElementById('place');
 
-}
+
+
