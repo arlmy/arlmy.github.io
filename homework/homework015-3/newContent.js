@@ -1,12 +1,16 @@
-var list = document.getElementById('list');
-var links = document.getElementsByTagName('a');
+window.onload = prepare;
 
-for ( var i=0; i < links.length; i++) {
-  links[i].onclick = function() {
-  return newContent(this);
+function prepareOnclick() {
+	var list = document.getElementById('list');
+	var links = document.getElementsByTagName('a');
+
+	for ( var i=0; i < links.length; i++) {
+	  links[i].onclick = function() {
+	  	return newContent(this) ? false : true;
+		}
 	}
-  links[i].onkeypress = links[i].onclick;
 }
+
 
 function newContent(whichHtml) {
 	var request = getHTTPObject();
