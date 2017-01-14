@@ -1,4 +1,4 @@
-window.onload = prepare;
+window.onload = prepareOnclick;
 
 function prepareOnclick() {
 	var list = document.getElementById('list');
@@ -11,17 +11,15 @@ function prepareOnclick() {
 	}
 }
 
-
 function newContent(whichHtml) {
 	var request = getHTTPObject();
 	request.open( "GET", whichHtml, true);
+	request.send();
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
 			console.log(request);
 			console.log(request.responseText);
-			var h1 =
-			var img
-			var p
+			document.getElementsByTagName("body").innerHTML = request.responseText;
 		}
 	}
 }
