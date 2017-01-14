@@ -3,7 +3,6 @@ window.onload = prepareOnclick;
 function prepareOnclick() {
 	var list = document.getElementById('list');
 	var links = list.getElementsByTagName('a');
-	var urls = links.getAttribute("href");
 
 	for ( var i=0; i < links.length; i++) {
 	  links[i].onclick = function() {
