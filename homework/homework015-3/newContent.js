@@ -8,6 +8,7 @@ function prepareOnclick() {
 	  links[i].onclick = function() {
 	  	console.log(list);
 	  	newContent(this);
+	  	alert(this);
 	  	return false;
 		}
 	}
@@ -16,6 +17,7 @@ function prepareOnclick() {
 
 function newContent(url) {
 	var request = getHTTPObject();
+	console.log(url);
 	request.open( "GET", url , true);
 	request.responseType = "document";
 	request.send();
