@@ -1,19 +1,21 @@
 window.onload = prepareOnclick;
+window.onload = abc;
 
 function prepareOnclick() {
 	var list = document.getElementById('list');
-	var links = document.getElementsByTagName('a');
+	var links = list.getElementsByTagName('a');
 
 	for ( var i=0; i < links.length; i++) {
 	  links[i].onclick = function() {
+	  	console.log(list);
 	  	return newContent(this) ? false : true;
 		}
 	}
 }
 
-function newContent(whichHtml) {
+function abc() {
 	var request = getHTTPObject();
-	request.open( "GET", whichHtml, true);
+	request.open( "GET", "members/picklecai.html" , true);
 	request.send();
 	request.onreadystatechange = function() {
 		if (request.readyState == 4) {
