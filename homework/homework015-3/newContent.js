@@ -7,6 +7,7 @@ function prepareOnclick() {
 	for ( var i=0; i < links.length; i++) {
 	  links[i].onclick = function() {
 	  	console.log(list);
+	  	alert(this);
 	  	newContent(this);
 	  	alert(this);
 	  	return false;
@@ -17,7 +18,9 @@ function prepareOnclick() {
 
 function newContent(url) {
 	var request = getHTTPObject();
-	console.log(url);
+	alert(url);
+	console.log(url); 
+	// 返回的格式是：<a href="linkding.html">零丁</a> 为什么也可以直接解析？
 	request.open( "GET", url , true);
 	request.responseType = "document";
 	request.send();
