@@ -7,12 +7,11 @@ function prepareOnclick() {
 	for ( var i=0; i < links.length; i++) {
 	  links[i].onclick = function() {
 	  	console.log(list);
-
-	  	var toString = Object.prototype.toString;
-		toString.call(this);
-
 	  	newContent(this);
 	  	return false;
+
+	  	var toString = Object.prototype.toString;
+		toString.call(new this);
 		}
 	}
 }
