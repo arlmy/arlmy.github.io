@@ -27,7 +27,7 @@ function drawCircle(canvas, context) {
   context.fill();
   */
 
-  var speed = 100;
+  var speed = 15;
   var angle = 55;
   var positionX = 60;
   var positionY = 60;
@@ -52,18 +52,10 @@ function drawCircle(canvas, context) {
 
   if (positionX < 60 || positionX > (canvas.width - 60)) {
     angle = 180 - angle;
-    radians = angle * (Math.PI / 180);
-    changeX = Math.cos(radians) * speed;
-    changeY = Math.sin(radians) * speed;
-    positionX += changeX;
-    positionY += changeY;
+    positionChange();
   } else if (positionY < 60 || positionY > (canvas.height - 60)) {
     angle = 360 - angle;
-    radians = angle * (Math.PI / 180);
-    changeX = Math.cos(radians) * speed;
-    changeY = Math.sin(radians) * speed;
-    positionX += changeX;
-    positionY += changeY;
+    positionChange();
   }
 
 }, 15);
@@ -74,6 +66,14 @@ function getRandom(min, max) {
   var Range = max - min;
   var Rand = Math.random();
   return (min + Math.round(Rand * Range));
+}
+
+function positionChange() {
+  radians = angle * (Math.PI / 180);
+  changeX = Math.cos(radians) * speed;
+  changeY = Math.sin(radians) * speed;
+  positionX += changeX;
+  positionY += changeY;
 }
 
 /*
