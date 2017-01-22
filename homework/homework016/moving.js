@@ -13,6 +13,8 @@ window.onload = function() {
 }
 
 function drawCircle(canvas, context) {
+
+  /*
   var radius = 60;
   var maxWidth = canvas.width - 60;
   var maxHeight= canvas.height - 60;
@@ -23,6 +25,33 @@ function drawCircle(canvas, context) {
   context.arc(x, y, radius, 0, 2 * Math.PI, true);
   context.fillStyle = "lightblue";
   context.fill();
+  */
+
+  var speed = 5;
+  var angle = 55;
+  var positionX = 60;
+  var positionY = 60;
+  var radius = 60;
+
+  setInterval(function() {
+
+  radians = angle * (Math.PI / 180);
+  changeX = Math.cos(radians) * speed;
+  changeY = Math.sin(radians) * speed;
+  positionX += changeX;
+  positionY += changeY;
+
+  context.beginPath();
+  context.fillStyle = "white";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  
+  context.arc(positionX, positionY, radius, 0, 2 * Math.PI, true);
+  context.fillStyle = "lightblue";
+  context.closePath();
+  context.fill();
+
+  },30);
+
 }
 
 /*
