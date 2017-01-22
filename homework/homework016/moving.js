@@ -27,7 +27,7 @@ function drawCircle(canvas, context) {
   context.fill();
   */
 
-  var speed = 5;
+  var speed = 100;
   var angle = 55;
   var positionX = 60;
   var positionY = 60;
@@ -44,55 +44,37 @@ function drawCircle(canvas, context) {
   context.beginPath();
   context.fillStyle = "white";
   context.fillRect(0, 0, canvas.width, canvas.height);
-  
+
   context.arc(positionX, positionY, radius, 0, 2 * Math.PI, true);
   context.fillStyle = "lightblue";
   context.closePath();
   context.fill();
 
-  },30);
+  if (positionX < 60 || positionX > (canvas.width - 60)) {
+    angle = 180 - angle;
+    radians = angle * (Math.PI / 180);
+    changeX = Math.cos(radians) * speed;
+    changeY = Math.sin(radians) * speed;
+    positionX += changeX;
+    positionY += changeY;
+  } else if (positionY < 60 || positionY > (canvas.height - 60)) {
+    angle = 360 - angle;
+    radians = angle * (Math.PI / 180);
+    changeX = Math.cos(radians) * speed;
+    changeY = Math.sin(radians) * speed;
+    positionX += changeX;
+    positionY += changeY;
+  }
+
+}, 15);
 
 }
-
-/*
-  var posX = 20,
-      posY = 100;
-  var vx = 10,
-      vy = -10,
-      gravity = 1;
-
-  setInterval(function() {
-  	context.fillStyle = "black";
-      context.fillRect(0,0,canvas.width, canvas.height);
-
-    posX += vx;
-    posY += vy;
-
-    if (posY > canvas.height * 0.75) {
-              vy *= -0.6;
-              vx *= 0.75;
-              posY = canvas.height * 0.75;
-        }
-
-    vy += gravity;
-
-  	context.beginPath();
-  	context.fillStyle = "white";
-
-  	context.arc(posX, posY, 10, 0, Math.PI*2, true);
-  	context.closePath();
-  	context.fill();
-  }, 30);
-
-
-*/
 
 function getRandom(min, max) {
   var Range = max - min;
   var Rand = Math.random();
   return (min + Math.round(Rand * Range));
 }
-
 
 /*
   var radius = 60;
