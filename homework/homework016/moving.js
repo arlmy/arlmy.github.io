@@ -14,49 +14,41 @@ window.onload = function() {
 
 function drawCircle(canvas, context) {
 
-  /*
-  var radius = 60;
   var maxWidth = canvas.width - 60;
   var maxHeight= canvas.height - 60;
   var x = getRandom(60, maxWidth);
   var y = getRandom(60, maxHeight);
 
-  context.beginPath();
-  context.arc(x, y, radius, 0, 2 * Math.PI, true);
-  context.fillStyle = "lightblue";
-  context.fill();
-  */
-
   var speed = 15;
-  var angle = 55;
-  var positionX = 60;
-  var positionY = 60;
+  var angle = getRandom(1, 359);
+  var positionX = x;
+  var positionY = y;
   var radius = 60;
 
   setInterval(function() {
 
-  radians = angle * (Math.PI / 180);
-  changeX = Math.cos(radians) * speed;
-  changeY = Math.sin(radians) * speed;
-  positionX += changeX;
-  positionY += changeY;
+    radians = angle * (Math.PI / 180);
+    changeX = Math.cos(radians) * speed;
+    changeY = Math.sin(radians) * speed;
+    positionX += changeX;
+    positionY += changeY;
 
-  context.beginPath();
-  context.fillStyle = "white";
-  context.fillRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 
-  context.arc(positionX, positionY, radius, 0, 2 * Math.PI, true);
-  context.fillStyle = "lightblue";
-  context.closePath();
-  context.fill();
+    context.arc(positionX, positionY, radius, 0, 2 * Math.PI, true);
+    context.fillStyle = "lightblue";
+    context.closePath();
+    context.fill();
 
-  if (positionX < 60 || positionX > (canvas.width - 60)) {
-    angle = 180 - angle;
-    positionChange();
-  } else if (positionY < 60 || positionY > (canvas.height - 60)) {
-    angle = 360 - angle;
-    positionChange();
-  }
+    if (positionX < 60 || positionX > (canvas.width - 60)) {
+      angle = 180 - angle;
+      positionChange();
+    } else if (positionY < 60 || positionY > (canvas.height - 60)) {
+      angle = 360 - angle;
+      positionChange();
+    }
 
 }, 15);
 
