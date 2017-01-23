@@ -9,25 +9,21 @@ window.onload = function() {
   canvas.height = window.innerHeight;
 
   drawCircle(canvas, context);
-  movingCircle(canvas, context);
 }
 
 function drawCircle(canvas, context) {
 
   var maxWidth = canvas.width - 60;
   var maxHeight= canvas.height - 60;
-  var x = getRandom(60, maxWidth);
-  var y = getRandom(60, maxHeight);
-
-  var speed = 15;
-  var angle = getRandom(1, 359);
-  var positionX = x;
-  var positionY = y;
+  var positionX = getRandom(60, maxWidth);
+  var positionY = getRandom(60, maxHeight);
+  var speed = 10;
+  var angle = getRandom(5, 350);
   var radius = 60;
 
   setInterval(function() {
 
-    radians = angle * (Math.PI / 180);
+    radians = angle * Math.PI / 180;
     changeX = Math.cos(radians) * speed;
     changeY = Math.sin(radians) * speed;
     positionX += changeX;
@@ -44,11 +40,23 @@ function drawCircle(canvas, context) {
 
     if (positionX < 60 || positionX > (canvas.width - 60)) {
       angle = 180 - angle;
-      positionChange();
+      radians = angle * (Math.PI / 180);
+      changeX = Math.cos(radians) * speed;
+      changeY = Math.sin(radians) * speed;
+      positionX += changeX;
+      positionY += changeY;
+
     } else if (positionY < 60 || positionY > (canvas.height - 60)) {
       angle = 360 - angle;
-      positionChange();
+      radians = angle * (Math.PI / 180);
+      changeX = Math.cos(radians) * speed;
+      changeY = Math.sin(radians) * speed;
+      positionX += changeX;
+      positionY += changeY;
+
     }
+
+
 
 }, 15);
 
@@ -58,27 +66,4 @@ function getRandom(min, max) {
   var Range = max - min;
   var Rand = Math.random();
   return (min + Math.round(Rand * Range));
-}
-
-function positionChange() {
-  radians = angle * (Math.PI / 180);
-  changeX = Math.cos(radians) * speed;
-  changeY = Math.sin(radians) * speed;
-  positionX += changeX;
-  positionY += changeY;
-}
-
-/*
-  var radius = 60;
-  var x = Math.floor(Math.random() * canvas.width);
-  var y = Math.floor(Math.random() * canvas.height);
-
-  context.beginPath();
-  context.arc(x, y, radius, 0, 2 * Math.PI, true);
-  context.fillStyle = "lightblue";
-  context.fill();
-*/
-
-function movingCircle(canvas, context) {
-
 }
