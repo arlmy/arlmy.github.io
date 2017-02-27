@@ -7,7 +7,7 @@ window.onload = function() {
   /* canvas 内的元素根据 canvas.width/height 定位，不加此项会有变形 */
 
   drawLines(canvas, context);
-  giveLife();
+  // giveLife();
 }
 
 /* 初始网格 */
@@ -47,14 +47,39 @@ function giveLife() {
 function newLife(life) {
   //console.log(life[1]); //传递效果
   displayLife(life);
+  //lifeEvolution(life);
+
+  // setInterval(lifeEvolution(life),300);
 }
 
-/* 生命演绎 */
+/* 演绎后代 */
+function displayNextGeneration() {
+    lifeEvolution(giveLife());
+}
+
+/* 生命演绎函数，数组赋值 */
 function lifeEvolution(life) {
-  
+  var nextGeneration = new Array();
+    for(var i=1; i<29; i++) {
+        nextGeneration[i] = new Array();
+        for(var j=1; j<29; j++) {
+        var count = life[i-1][j-1] + life[i][j-1] + life[i+1][j-1] + life[i-1][j] + life[i+1][j] + life[i-1][j+1] + life[i][j+1] + life[i+1][j+1];
+        // console.log(count);
+            if ( life[i][j] == 0 && count == 3 ) {
+            nextGeneration[i][j] = 1;
+            } else if ( life[i][j] == 1 && ( count != 2 && count != 3 )) {
+            nextGeneration[i][j] = 0;
+            } else {
+            nextGeneration[i][j] = life[i][j];
+            }
+            // console.log(nextGeneration[i][j]);
+        }
+    }
+  // console.log(nextGeneration[1]); // 测试赋值结果
+  displayLife(nextGeneration);
 }
 
-setInterval(displayLife(),200)
+// setInterval(displayLife(),200)
 
 /* 按数组填充 */
 function displayLife(life) {
