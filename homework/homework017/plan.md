@@ -12,6 +12,9 @@
 
 - [The irRegularGame of Life](http://www.newgrounds.com/portal/view/468517)
 - [John Conway's Game of Life](https://bitstorm.org/gameoflife/)
+- [Conway's Game of Life - Javascript/Canvas Implementation](http://pmav.eu/stuff/javascript-game-of-life-v3.1.1/?autoplay=0&trail=0&grid=1&colors=1&zoom=1&s=random)
+- [LifeWiki](http://conwaylife.com/w/index.php?title=Main_Page)
+- [生命游戏中英文对照表](http://tieba.baidu.com/p/3666424278)
 
 ## 设计步骤
 
