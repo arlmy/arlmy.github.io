@@ -6,7 +6,7 @@
 
 - [Model Thinking:3.4 生命游戏 Game of Life](http://mooc.guokr.com/note/15029/)
 - [細胞自動機 - Cellular Automata](http://www.atlas-zone.com/complex/alife/ca/index.html) 站内还有复杂性科学的内容
-- [[心得] 生命遊戲（Game of life） - 看板 puzzle - 批踢踢實業坊](https://www.ptt.cc/bbs/puzzle/M.1249635651.A.21E.html)
+- [心得 生命遊戲（Game of life） - 看板 puzzle - 批踢踢實業坊](https://www.ptt.cc/bbs/puzzle/M.1249635651.A.21E.html)
 
 ### 案例
 
@@ -15,6 +15,11 @@
 - [Conway's Game of Life - Javascript/Canvas Implementation](http://pmav.eu/stuff/javascript-game-of-life-v3.1.1/?autoplay=0&trail=0&grid=1&colors=1&zoom=1&s=random)
 - [LifeWiki](http://conwaylife.com/w/index.php?title=Main_Page)
 - [生命游戏中英文对照表](http://tieba.baidu.com/p/3666424278)
+
+### 分析
+
+- [簡單需求的複雜作用 | 響笛 - Alfred's Stuff](http://alfredwei.blogspot.com/2011/07/blog-post_27.html)
+- [Game of Life -- 黑客的玩具 - H4CK1N9](http://zhaidongplus.is-programmer.com/posts/6873.html)
 
 ## 设计步骤
 
