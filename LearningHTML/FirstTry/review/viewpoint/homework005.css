@@ -1,0 +1,36 @@
+body {
+	font-family: "PingFang SC", "Microsoft YaHei";
+	margin: 30px;
+	padding: 0;
+	background-color: #FF1744;
+}
+
+.container {
+	
+}
+
+header, .name, .like, .about, .proust {
+	font-size: 1.5em;
+	padding: 15px;
+	margin: 20px auto;
+	background-color: #FF9100;
+	color: #EEEEEE;
+}
+
+figure {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	min-width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+
+}
+
+p {
+	margin: 0.4em;
+}
