@@ -37,10 +37,9 @@
     <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
 [ [home] ](/index.html)
 
-- [Tools](/Tools.html)
 - [Learning Projects](/LearningProjects.html)
-- [Worth To Watch](/WorthToWatch.html)
-- [About](/About.html)
+- [Investment](/Investment.html)
+- [Notebook](/Notebook.html)
 
 <details>
   <summary>常用info</summary>
@@ -60,6 +59,9 @@
   - AI： [Prompt Library from DeepSeek](https://api-docs.deepseek.com/zh-cn/prompt-library/)
   - 趋势观察：[资金流监测](https://data.eastmoney.com/bkzj/jlr.html)，[研报中心](https://data.eastmoney.com/report/)，[东方财富分析师指数](https://data.eastmoney.com/invest/invest/default.html)，[景气度研究 乐咕乐股](https://legulegu.com/stockdata/market-indicator-nav)，[国务院发展研究中心信息网-行业经济-运行数据](https://www.drcnet.com.cn/specialTopic?uid=A1020205)
   - 新上市：[New Listing Information 披露易](https://www1.hkexnews.hk/app/appindex.html?lang=zh)
+  - [疾病与状况 妙佑医疗/梅奥诊所](https://www.mayoclinic.org/zh-hans/diseases-conditions)，任何疾病都可以先在这里搜索一下，公正未污染的信息
+  - 所见即所得编辑器：[Online WYSIWYG Editor](https://wysiwyghtml.com/)、[Free Online HTML Editor and Cleaner](https://html-online.com/)
+  - [火山方舟大模型体验中心-火山引擎](https://www.volcengine.com/experience/ark)
 </details>
 
 <details>
@@ -103,6 +105,17 @@
   - 莎士比亚的这句话：“我们这些渺小的凡人，一个个在他粗大的两腿下行走，四处张望着，替自己寻找不光荣的坟墓。” 出自他的著名悲剧 《裘力斯·凯撒》（Julius Caesar）。
 </details>
 
+<details>
+  <summary>分身站点</summary>
+
+  - z for [素生](https://z.arlmy.me/)
+  - d for [Piece-s](https://d.arlmy.me/)
+  - x for [xLog](https://x.arlmy.me/)
+  - c for [Telegram Archive](https://c.arlmy.me/)
+  - e for [素生的web3镜像](https://e.arlmy.me/)
+  - f for [素生的草稿箱](https://f.arlmy.me/)
+</details>
+
     </textarea>
   </div>
 
@@ -114,10 +127,17 @@
     let hasUnsavedChanges = false;
     let saveTimer = null;
     
-    // 从本地存储加载内容
-    const savedContent = localStorage.getItem('markdownContent');
+    // 检测是否是强制刷新
+    const isHardRefresh = performance.navigation.type === 1 || 
+                         performance.getEntriesByType("navigation")[0].type === "reload";
+    
+    // 从本地存储加载内容，如果是强制刷新则忽略缓存
+    const savedContent = isHardRefresh ? null : localStorage.getItem('markdownContent');
     if (savedContent) {
       input.value = savedContent;
+    } else {
+      // 使用默认内容
+      input.value = document.getElementById('markdown-input').defaultValue;
     }
     
     function updatePreview() {

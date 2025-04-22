@@ -4,23 +4,38 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Investment Notes</title>
-
-  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      setTimeout(() => hljs.highlightAll(), 100);
-    </script>
+  <title>Investment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.0/marked.min.js"></script>
   <link rel="stylesheet" href="/index.css" />
+  <style>
+    .editor-container {
+      display: flex;
+      gap: 20px;
+      margin: 20px;
+    }
+    #markdown-input, #html-preview {
+      flex: 1;
+      min-height: 300px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #html-preview {
+      overflow: auto;
+    }
+  </style>
 </head>
 
 <body>
-  <md-block>
-    [ [home] ](/index.html)
+  <div id="html-preview"></div>
+
+  <button id="toggle-editor" style="margin: 20px; padding: 8px 16px;">O</button>
+  
+  <div id="editor-container" style="display: none; margin: 20px;">
+    <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+  [ [home] ](/index.html)
     
     - 汇总投资明细。我的股债比例。自动统计计算自己的持仓成本等。
     - 每年300指数，不变的公司名单
@@ -32,22 +47,71 @@
     
     - 化工519870，油气159697，钢铁502023，低碳159885，光伏159863，资源160620。513970，513120，515120，159928主要消费
     - 煤炭、能源、新能源、有色、电力的周期关注（开始反弹）。基建、钢铁、化工、银行、石油石化、消费红利。
+  </textarea>
+</div>
+
+<script>
+  const input = document.getElementById('markdown-input');
+  const preview = document.getElementById('html-preview');
+  const toggleBtn = document.getElementById('toggle-editor');
+  const editorContainer = document.getElementById('editor-container');
+  let hasUnsavedChanges = false;
+  let saveTimer = null;
+  
+  // 检测是否是强制刷新
+  const isHardRefresh = performance.navigation.type === 1 || 
+                       performance.getEntriesByType("navigation")[0].type === "reload";
+  
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const savedContent = isHardRefresh ? null : localStorage.getItem('markdownContent');
+  if (savedContent) {
+    input.value = savedContent;
+  } else {
+    // 使用默认内容
+    input.value = document.getElementById('markdown-input').defaultValue;
+  }
+  
+  function updatePreview() {
+    preview.innerHTML = marked.parse(input.value);
+    hljs.highlightAll();
+    hasUnsavedChanges = true;
     
-  </md-block>
+    // 自动保存，延迟500ms避免频繁操作
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      localStorage.setItem('markdownContent', input.value);
+      hasUnsavedChanges = false;
+    }, 500);
+  }
+  
+  // 页面关闭前提示未保存的修改
+  window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) {
+      e.preventDefault();
+      e.returnValue = '您有未保存的修改，确定要离开吗？';
+    }
+  });
 
+  input.addEventListener('input', updatePreview);
+  updatePreview();
 
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = editorContainer.style.display === 'none';
+    editorContainer.style.display = isHidden ? 'block' : 'none';
+    toggleBtn.textContent = isHidden ? 'X' : 'O';
+  });
+</script>
 
+<!-- 注释掉的评论功能
 <div id="tcomment"></div>
 <script src="https://unpkg.com/twikoo/dist/twikoo.all.min.js"></script>
 <script>
-    twikoo.init({
-      envId: 'https://comments.arlmy.me/.netlify/functions/twikoo',
-      el: '#tcomment'
-    })
-  </script>
-
-
+  twikoo.init({
+    envId: 'https://comments.arlmy.me/.netlify/functions/twikoo',
+    el: '#tcomment'
+  })
+</script>
+-->
 
 </body>
 </html>
-
