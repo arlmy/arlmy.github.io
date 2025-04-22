@@ -249,4 +249,52 @@
         });
     </script>
 
+    <!-- 修改保存按钮的容器，添加class而不是内联样式 -->
+    <div class="save-btn-container">
+        <button id="save-local-btn" class="save-btn">保存到本地</button>
+    </div>
+
+    <style>
+        /* 在style标签中添加样式 */
+        .save-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .save-btn {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        // 修改保存功能，不再移除按钮容器
+        document.getElementById('save-local-btn').addEventListener('click', function() {
+            const htmlContent = `<!DOCTYPE html>
+<html lang="zh-CN">
+${document.head.outerHTML}
+${document.body.outerHTML}
+</html>`;
+            
+            // 创建Blob对象
+            const blob = new Blob([htmlContent], {type: 'text/html'});
+            const url = URL.createObjectURL(blob);
+            
+            // 创建下载链接
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Notebook.html';
+            document.body.appendChild(a);
+            a.click();
+            
+            // 清理
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        });
+    </script>
 </body></html>
