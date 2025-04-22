@@ -35,18 +35,19 @@
   
   <div id="editor-container" style="display: none; margin: 20px;">
     <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-  [ [home] ](/index.html)
+[ [home] ](/index.html)
     
-    - 汇总投资明细。我的股债比例。自动统计计算自己的持仓成本等。
-    - 每年300指数，不变的公司名单
-    - 切切实实的长期的好生意，真的就那几种，越是成为人类无意识中在依赖的，越好。能源，糖果，一些消费（从头到尾的供应链，全球化更好）
-    - 能够建立起竞争壁垒的行业和企业（灰色地带，比如赌博、噬甜、上瘾、游戏）。 这些行业往往具有需求稳定、抗周期性强、现金流良好的特点。
-    - 汽车、家电等依赖消费信贷的行业。房地产与REITs，高股息公用事业，科技与成长股，消费必需品，医疗保健，黄金与贵金属
-    - 精选基本面良好、竞争优势突出的优质公司
-    
-    
-    - 化工519870，油气159697，钢铁502023，低碳159885，光伏159863，资源160620。513970，513120，515120，159928主要消费
-    - 煤炭、能源、新能源、有色、电力的周期关注（开始反弹）。基建、钢铁、化工、银行、石油石化、消费红利。
+- 汇总投资明细。我的股债比例。自动统计计算自己的持仓成本等。
+- 每年300指数，不变的公司名单
+- 切切实实的长期的好生意，真的就那几种，越是成为人类无意识中在依赖的，越好。能源，糖果，一些消费（从头到尾的供应链，全球化更好）
+- 能够建立起竞争壁垒的行业和企业（灰色地带，比如赌博、噬甜、上瘾、游戏）。 这些行业往往具有需求稳定、抗周期性强、现金流良好的特点。
+- 汽车、家电等依赖消费信贷的行业。房地产与REITs，高股息公用事业，科技与成长股，消费必需品，医疗保健，黄金与贵金属
+- 精选基本面良好、竞争优势突出的优质公司
+
+
+- 化工519870，油气159697，钢铁502023，低碳159885，光伏159863，资源160620。513970，513120，515120，159928主要消费
+- 煤炭、能源、新能源、有色、电力的周期关注（开始反弹）。基建、钢铁、化工、银行、石油石化、消费红利。
+
   </textarea>
 </div>
 
@@ -63,14 +64,19 @@
                        performance.getEntriesByType("navigation")[0].type === "reload";
   
   // 从本地存储加载内容，如果是强制刷新则忽略缓存
-  const savedContent = isHardRefresh ? null : localStorage.getItem('markdownContent');
+  const storageKey = 'markdownContent_' + window.location.pathname.replace(/\//g, '_');
+
+
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const savedContent = isHardRefresh ? null : localStorage.getItem(storageKey);
   if (savedContent) {
     input.value = savedContent;
   } else {
     // 使用默认内容
     input.value = document.getElementById('markdown-input').defaultValue;
   }
-  
+
+
   function updatePreview() {
     preview.innerHTML = marked.parse(input.value);
     hljs.highlightAll();
@@ -79,10 +85,10 @@
     // 自动保存，延迟500ms避免频繁操作
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
-      localStorage.setItem('markdownContent', input.value);
+      localStorage.setItem(storageKey, input.value);
       hasUnsavedChanges = false;
     }, 500);
-  }
+  } 
   
   // 页面关闭前提示未保存的修改
   window.addEventListener('beforeunload', (e) => {

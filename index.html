@@ -116,73 +116,76 @@
   - f for [素生的草稿箱](https://f.arlmy.me/)
 </details>
 
-    </textarea>
-  </div>
+</textarea>
+</div>
 
-  <script>
-    const input = document.getElementById('markdown-input');
-    const preview = document.getElementById('html-preview');
-    const toggleBtn = document.getElementById('toggle-editor');
-    const editorContainer = document.getElementById('editor-container');
-    let hasUnsavedChanges = false;
-    let saveTimer = null;
+<script>
+  const input = document.getElementById('markdown-input');
+  const preview = document.getElementById('html-preview');
+  const toggleBtn = document.getElementById('toggle-editor');
+  const editorContainer = document.getElementById('editor-container');
+  let hasUnsavedChanges = false;
+  let saveTimer = null;
+  
+  // 检测是否是强制刷新
+  const isHardRefresh = performance.navigation.type === 1 || 
+                       performance.getEntriesByType("navigation")[0].type === "reload";
+  
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const storageKey = 'markdownContent_' + window.location.pathname.replace(/\//g, '_');
+
+
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const savedContent = isHardRefresh ? null : localStorage.getItem(storageKey);
+  if (savedContent) {
+    input.value = savedContent;
+  } else {
+    // 使用默认内容
+    input.value = document.getElementById('markdown-input').defaultValue;
+  }
+
+
+  function updatePreview() {
+    preview.innerHTML = marked.parse(input.value);
+    hljs.highlightAll();
+    hasUnsavedChanges = true;
     
-    // 检测是否是强制刷新
-    const isHardRefresh = performance.navigation.type === 1 || 
-                         performance.getEntriesByType("navigation")[0].type === "reload";
-    
-    // 从本地存储加载内容，如果是强制刷新则忽略缓存
-    const savedContent = isHardRefresh ? null : localStorage.getItem('markdownContent');
-    if (savedContent) {
-      input.value = savedContent;
-    } else {
-      // 使用默认内容
-      input.value = document.getElementById('markdown-input').defaultValue;
+    // 自动保存，延迟500ms避免频繁操作
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      localStorage.setItem(storageKey, input.value);
+      hasUnsavedChanges = false;
+    }, 500);
+  } 
+  
+  // 页面关闭前提示未保存的修改
+  window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) {
+      e.preventDefault();
+      e.returnValue = '您有未保存的修改，确定要离开吗？';
     }
-    
-    function updatePreview() {
-      preview.innerHTML = marked.parse(input.value);
-      hljs.highlightAll();
-      hasUnsavedChanges = true;
-      
-      // 自动保存，延迟500ms避免频繁操作
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => {
-        localStorage.setItem('markdownContent', input.value);
-        hasUnsavedChanges = false;
-      }, 500);
-    }
-    
-    // 页面关闭前提示未保存的修改
-    window.addEventListener('beforeunload', (e) => {
-      if (hasUnsavedChanges) {
-        e.preventDefault();
-        e.returnValue = '您有未保存的修改，确定要离开吗？';
-      }
-    });
+  });
 
-    input.addEventListener('input', updatePreview);
-    updatePreview();
+  input.addEventListener('input', updatePreview);
+  updatePreview();
 
-    toggleBtn.addEventListener('click', () => {
-      const isHidden = editorContainer.style.display === 'none';
-      editorContainer.style.display = isHidden ? 'block' : 'none';
-      toggleBtn.textContent = isHidden ? 'X' : 'O';
-    });
-  </script>
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = editorContainer.style.display === 'none';
+    editorContainer.style.display = isHidden ? 'block' : 'none';
+    toggleBtn.textContent = isHidden ? 'X' : 'O';
+  });
+</script>
 
 <!-- 注释掉的评论功能
-  <div id="tcomment"></div>
-  <script src="https://unpkg.com/twikoo/dist/twikoo.all.min.js"></script>
-  <script>
-    twikoo.init({
-      envId: 'https://comments.arlmy.me/.netlify/functions/twikoo',
-      el: '#tcomment'
-    })
-  </script>
-  -->
+<div id="tcomment"></div>
+<script src="https://unpkg.com/twikoo/dist/twikoo.all.min.js"></script>
+<script>
+  twikoo.init({
+    envId: 'https://comments.arlmy.me/.netlify/functions/twikoo',
+    el: '#tcomment'
+  })
+</script>
+-->
 
 </body>
 </html>
-
-
