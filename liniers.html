@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mdNotebook</title>
+  <title>Liniers</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -32,16 +32,26 @@
 <body>
   <div id="html-preview"></div>
 
-  <button id="toggle-editor" style="margin: 20px; padding: 8px 16px;">X</button>
-  <button id="download-md" style="margin: 20px; padding: 8px 16px;">.md</button>
+  <button id="toggle-editor" style="margin: 20px; padding: 8px 16px;">O</button>
   
-  <div id="editor-container" style="margin: 20px;">
+  <div id="editor-container" style="display: none; margin: 20px;">
     <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
 [ [home] ](/index.html)
+    
+- [Liniers (cartoonist) - Wikiwand](https://www.wikiwand.com/en/articles/Liniers_(cartoonist))
+- 1999年9月至2002年6月，在No!杂志连载Bonjour
+- 2002年6月开始在La Nación连载Macanudo
+- [Liniers (@porliniers) - X](https://x.com/porliniers)
+- 已经在出英文译版：[Liniers - Amazon.com:](https://www.amazon.com/stores/author/B001JO8CAQ?ccs_id=e76bbcd6-4726-41b2-9e17-978664aa6037)
+  - The Truth About the Couch, 20240423
+  - Macanudo: Welcome to Elsewhere, 20221025
+  - Macanudo: Optimism Is for the Brave, 20231107
+  - Macanudo: The Way of the Penguin, 20241217
+- [Blogspot 更新至2012年](https://macanudoliniers.blogspot.com/)
+- [Tienda Online de laeditorialcomun](https://www.laeditorialcomun.com/)
 
-开始书写
 
-</textarea>
+  </textarea>
 </div>
 
 <script>
@@ -98,21 +108,6 @@
     const isHidden = editorContainer.style.display === 'none';
     editorContainer.style.display = isHidden ? 'block' : 'none';
     toggleBtn.textContent = isHidden ? 'X' : 'O';
-  });
-
-  // 添加下载功能
-  document.getElementById('download-md').addEventListener('click', () => {
-    const content = input.value;
-    const blob = new Blob([content], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `mdNotebook_${new Date().toISOString().replace(/-/g, '').slice(0, 8)}.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   });
 </script>
 
