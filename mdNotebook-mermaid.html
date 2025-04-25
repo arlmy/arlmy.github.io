@@ -10,8 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <!-- or UMD script -->
   <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked-mermaid/lib/index.umd.js"></script>
-  <!-- 还需要 Mermaid 库本身来渲染图表 -->
+  <script src="markedMermaid.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 
   <style>
@@ -76,21 +75,21 @@
 
 
   function updatePreview() {
-    // 配置marked和marked-mermaid
     // 确保 markedMermaid 已定义
     if (typeof markedMermaid === 'undefined') {
       console.error('markedMermaid is not defined');
+      return;
     }
-    
+  
     const options = {
       mermaid: {
         theme: 'default'
       }
     };
-    
+  
     // 使用 markedMermaid
     marked.use(markedMermaid(options));
-
+  
     // 解析Markdown
     let htmlContent = marked.parse(input.value);
     
@@ -99,14 +98,14 @@
     
     // 异步渲染Mermaid图表
     setTimeout(() => {
-        mermaid.run({
-            querySelector: '.mermaid',
-            nodes: [preview]
-        }).catch(err => {
-            console.error('Mermaid渲染错误:', err);
-        }).then(() => {
-            hljs.highlightAll();
-        });
+      mermaid.run({
+        querySelector: '.mermaid',
+        nodes: [preview]
+      }).catch(err => {
+        console.error('Mermaid渲染错误:', err);
+      }).then(() => {
+        hljs.highlightAll();
+      });
     }, 0);
     
     hasUnsavedChanges = true;
@@ -114,10 +113,10 @@
     // 自动保存，延迟500ms避免频繁操作
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
-        localStorage.setItem(storageKey, input.value);
-        hasUnsavedChanges = false;
+      localStorage.setItem(storageKey, input.value);
+      hasUnsavedChanges = false;
     }, 500);
-} 
+  }
   
   // 页面关闭前提示未保存的修改
   window.addEventListener('beforeunload', (e) => {
