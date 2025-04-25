@@ -96,6 +96,9 @@
     // 先更新预览内容
     preview.innerHTML = htmlContent;
     
+    // 初始化 Mermaid
+    mermaid.initialize(options.mermaid);
+    
     // 异步渲染Mermaid图表
     setTimeout(() => {
       mermaid.run({
