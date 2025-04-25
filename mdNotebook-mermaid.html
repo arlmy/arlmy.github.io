@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mdNotebook</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- or UMD script -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked-mermaid/lib/index.umd.js"></script>
+  <!-- 还需要 Mermaid 库本身来渲染图表 -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+  <style>
+    .editor-container {
+      display: flex;
+      gap: 20px;
+      margin: 20px;
+    }
+    #markdown-input, #html-preview {
+      flex: 1;
+      min-height: 300px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #html-preview {
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="html-preview"></div>
+
+  <button id="toggle-editor" style="margin: 20px; padding: 8px 16px;">X</button>
+  <button id="download-md" style="margin: 20px; padding: 8px 16px;">.md</button>
+  <button id="render-html" style="margin: 20px; padding: 8px 16px;">渲染HTML</button>
+  
+  <div id="editor-container" style="margin: 20px;">
+    <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+[ [home] ](/index.html)
+
+开始书写
+
+</textarea>
+</div>
+
+<script>
+  const input = document.getElementById('markdown-input');
+  const preview = document.getElementById('html-preview');
+  const toggleBtn = document.getElementById('toggle-editor');
+  const editorContainer = document.getElementById('editor-container');
+  let hasUnsavedChanges = false;
+  let saveTimer = null;
+  
+  // 检测是否是强制刷新
+  const isHardRefresh = performance.navigation.type === 1 || 
+                       performance.getEntriesByType("navigation")[0].type === "reload";
+  
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const storageKey = 'markdownContent_' + window.location.pathname.replace(/\//g, '_');
+
+
+  // 从本地存储加载内容，如果是强制刷新则忽略缓存
+  const savedContent = isHardRefresh ? null : localStorage.getItem(storageKey);
+  if (savedContent) {
+    input.value = savedContent;
+  } else {
+    // 使用默认内容
+    input.value = document.getElementById('markdown-input').defaultValue;
+  }
+
+
+  function updatePreview() {
+    // 配置marked和marked-mermaid
+    // 确保 markedMermaid 已定义
+    if (typeof markedMermaid === 'undefined') {
+      console.error('markedMermaid is not defined');
+    }
+    
+    const options = {
+      mermaid: {
+        theme: 'default'
+      }
+    };
+    
+    // 使用 markedMermaid
+    marked.use(markedMermaid(options));
+
+    // 解析Markdown
+    let htmlContent = marked.parse(input.value);
+    
+    // 先更新预览内容
+    preview.innerHTML = htmlContent;
+    
+    // 异步渲染Mermaid图表
+    setTimeout(() => {
+        mermaid.run({
+            querySelector: '.mermaid',
+            nodes: [preview]
+        }).catch(err => {
+            console.error('Mermaid渲染错误:', err);
+        }).then(() => {
+            hljs.highlightAll();
+        });
+    }, 0);
+    
+    hasUnsavedChanges = true;
+    
+    // 自动保存，延迟500ms避免频繁操作
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+        localStorage.setItem(storageKey, input.value);
+        hasUnsavedChanges = false;
+    }, 500);
+} 
+  
+  // 页面关闭前提示未保存的修改
+  window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) {
+      e.preventDefault();
+      e.returnValue = '您有未保存的修改，确定要离开吗？';
+    }
+  });
+
+  input.addEventListener('input', updatePreview);
+  updatePreview();
+
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = editorContainer.style.display === 'none';
+    editorContainer.style.display = isHidden ? 'block' : 'none';
+    toggleBtn.textContent = isHidden ? 'X' : 'O';
+  });
+
+  // 添加下载功能
+  document.getElementById('download-md').addEventListener('click', () => {
+    let content = input.value;
+    
+    // 将<summary>标签内容加粗，并删除<details>和<summary>标签
+    content = content.replace(/<details>\s*<summary>(.*?)<\/summary>/g, '**$1**\n');
+    content = content.replace(/<\/details>/g, '');
+    
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `mdNotebook_${new Date().toISOString().replace(/-/g, '').slice(0, 8)}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+// 添加手动渲染功能
+document.getElementById('render-html').addEventListener('click', () => {
+    updatePreview();
+});
+
+</script>
+
+</body>
+</html>
