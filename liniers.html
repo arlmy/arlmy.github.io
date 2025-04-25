@@ -33,7 +33,8 @@
   <div id="html-preview"></div>
 
   <button id="toggle-editor" style="margin: 20px; padding: 8px 16px;">O</button>
-  
+  <button id="download-md" style="margin: 20px; padding: 8px 16px;">.md</button>
+
   <div id="editor-container" style="display: none; margin: 20px;">
     <textarea id="markdown-input" style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
 [ [home] ](/index.html)
@@ -109,6 +110,27 @@
     editorContainer.style.display = isHidden ? 'block' : 'none';
     toggleBtn.textContent = isHidden ? 'X' : 'O';
   });
+
+  // 添加下载功能
+  document.getElementById('download-md').addEventListener('click', () => {
+    let content = input.value;
+    
+    // 将<summary>标签内容加粗，并删除<details>和<summary>标签
+    content = content.replace(/<details>\s*<summary>(.*?)<\/summary>/g, '**$1**\n');
+    content = content.replace(/<\/details>/g, '');
+    
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `mdNotebook_${new Date().toISOString().replace(/-/g, '').slice(0, 8)}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
 </script>
 
 <!-- 注释掉的评论功能
