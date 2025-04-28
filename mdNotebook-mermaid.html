@@ -101,14 +101,20 @@
     
     // 异步渲染Mermaid图表
     setTimeout(() => {
-      mermaid.run({
-        querySelector: '.mermaid',
-        nodes: [preview]
-      }).catch(err => {
-        console.error('Mermaid渲染错误:', err);
-      }).then(() => {
-        hljs.highlightAll();
-      });
+      const mermaidContainers = preview.querySelectorAll('.mermaid');
+      if (mermaidContainers.length > 0) {
+        mermaidContainers.forEach(container => {
+          if (!container.textContent.trim().startsWith('<')) { // 过滤掉纯HTML内容
+            mermaid.run({
+              querySelector: '.mermaid',
+              nodes: [container]
+            }).catch(err => {
+              console.error('Mermaid渲染错误:', err);
+            });
+          }
+        });
+      }
+      hljs.highlightAll();
     }, 0);
     
     hasUnsavedChanges = true;
