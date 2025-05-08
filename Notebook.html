@@ -194,6 +194,10 @@
                     <a href="https://app.radiooooo.com/" target="_blank">按年代、国家听歌</a>
                     <button class="delete-btn">删除</button>
                 </div>
+                <div class="link-item">
+                    <a href="https://rushiwowen.co/chat" target="_blank">经书对话 - 如是我问</a>
+                    <button class="delete-btn">删除</button>
+                </div>
             </div>
         </section>
     </div>
@@ -300,6 +304,42 @@
     <script>
         // 修改保存功能，不再移除按钮容器
         document.getElementById('save-local-btn').addEventListener('click', function() {
+            document.querySelector('.save-btn').addEventListener('click', function() {
+                // 克隆整个文档
+                const docClone = document.cloneNode(true);
+                
+                // 移除所有theme-adaptive相关的样式
+                const themeStyles = docClone.querySelectorAll('style[class*="theme-adaptive"], style:contains("theme-adaptive")');
+                themeStyles.forEach(style => style.remove());
+                
+                // 移除Google Analytics脚本
+                const gaScripts = docClone.querySelectorAll('script[src*="googletagmanager"]');
+                gaScripts.forEach(script => script.remove());
+                
+                // 创建新的HTML字符串
+                const html = `<!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Notebook Backup</title>
+                <style>
+                    ${docClone.querySelector('style').innerText}
+                </style>
+            </head>
+            <body>
+                ${docClone.querySelector('.container').outerHTML}
+            </body>
+            </html>`;
+                
+                // 创建下载链接
+                const blob = new Blob([html], {type: 'text/html'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'notebook_backup.html';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
             const htmlContent = `<!DOCTYPE html>
 <html lang="zh-CN">
 ${document.head.outerHTML}
