@@ -305,10 +305,16 @@
         // 修改保存功能，不再移除按钮容器
         document.getElementById('save-local-btn').addEventListener('click', function() {
             document.querySelector('.save-btn').addEventListener('click', function() {
-                // 克隆整个文档
+                // 创建文档克隆
                 const docClone = document.cloneNode(true);
                 
-                // 移除所有theme-adaptive相关的样式
+                // 移除所有style标签和script标签
+                const styles = docClone.querySelectorAll('style');
+                styles.forEach(style => style.remove());
+                const scripts = docClone.querySelectorAll('script');
+                scripts.forEach(script => script.remove());
+                
+                // 原有的其他清理逻辑（如theme-adaptive样式和GA脚本）可以根据实际情况保留或删除
                 const themeStyles = docClone.querySelectorAll('style[class*="theme-adaptive"], style:contains("theme-adaptive")');
                 themeStyles.forEach(style => style.remove());
                 
